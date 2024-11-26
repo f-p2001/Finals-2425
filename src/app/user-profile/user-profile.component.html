@@ -1,0 +1,81 @@
+<form [formGroup]="userProfileForm" (ngSubmit)="onSubmit()">
+    <!-- First Name -->
+    <div class="mb-3">
+      <label for="firstName" class="form-label">First Name:</label>
+      <input type="text" class="form-control" id="firstName" formControlName="firstName">
+      <div *ngIf="userProfileForm.get('firstName')?.touched && userProfileForm.get('firstName')?.invalid" class="text-danger">
+        <small *ngIf="userProfileForm.get('firstName')?.hasError('required')">First Name is required.</small>
+      </div>
+    </div>
+  
+    <!-- Middle Name -->
+    <div class="mb-3">
+      <label for="middleName" class="form-label">Middle Name:</label>
+      <input type="text" class="form-control" id="middleName" formControlName="middleName">
+    </div>
+  
+    <!-- Last Name -->
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Last Name:</label>
+      <input type="text" class="form-control" id="lastName" formControlName="lastName">
+      <div *ngIf="userProfileForm.get('lastName')?.touched && userProfileForm.get('lastName')?.invalid" class="text-danger">
+        <small *ngIf="userProfileForm.get('lastName')?.hasError('required')">Last Name is required.</small>
+      </div>
+    </div>
+  
+    <!-- Address Fields -->
+    <div class="mb-3">
+      <label for="houseNumber" class="form-label">House #:</label>
+      <input type="text" class="form-control" id="houseNumber" formControlName="houseNumber">
+    </div>
+  
+    <div class="mb-3">
+      <label for="street" class="form-label">Street:</label>
+      <input type="text" class="form-control" id="street" formControlName="street">
+    </div>
+  
+    <div class="mb-3">
+      <label for="barangay" class="form-label">Barangay:</label>
+      <input type="text" class="form-control" id="barangay" formControlName="barangay">
+    </div>
+  
+    <div class="mb-3">
+      <label for="city" class="form-label">City:</label>
+      <input type="text" class="form-control" id="city" formControlName="city">
+    </div>
+  
+    <div class="mb-3">
+      <label for="province" class="form-label">Province:</label>
+      <input type="text" class="form-control" id="province" formControlName="province">
+    </div>
+  
+    <!-- Profile Image -->
+    <div class="mb-3">
+      <label for="profileImage" class="form-label">Profile Image:</label>
+      <input type="file" class="form-control" id="profileImage" (change)="onFileChange($event)">
+    </div>
+  
+    <!-- Email -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Email Address:</label>
+      <input type="email" class="form-control" id="email" formControlName="email">
+      <div *ngIf="userProfileForm.get('email')?.touched && userProfileForm.get('email')?.invalid" class="text-danger">
+        <small *ngIf="userProfileForm.get('email')?.hasError('required')">Email is required.</small>
+        <small *ngIf="userProfileForm.get('email')?.hasError('email')">Please enter a valid email.</small>
+      </div>
+    </div>
+  
+    <!-- Mobile Number -->
+    <div class="mb-3">
+      <label for="mobileNumber" class="form-label">Mobile Number:</label>
+      <input type="text" class="form-control" id="mobileNumber" formControlName="mobileNumber">
+      <div *ngIf="userProfileForm.get('mobileNumber')?.touched && userProfileForm.get('mobileNumber')?.invalid" class="text-danger">
+        <small *ngIf="userProfileForm.get('mobileNumber')?.hasError('required')">Mobile number is required.</small>
+        <small *ngIf="userProfileForm.get('mobileNumber')?.hasError('pattern')">Please enter a valid 10-digit mobile number.</small>
+      </div>
+    </div>
+  
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary" [disabled]="userProfileForm.invalid">Save Profile</button>
+  </form>
+  
