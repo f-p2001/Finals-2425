@@ -1,35 +1,29 @@
 <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-    <!-- Email -->
-    <div class="mb-3">
-      <label for="email" class="form-label">Email Address:</label>
-      <input type="email" class="form-control" id="email" formControlName="email">
-      <div *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.invalid" class="text-danger">
-        <small *ngIf="registrationForm.get('email')?.hasError('required')">Email is required.</small>
-        <small *ngIf="registrationForm.get('email')?.hasError('email')">Please enter a valid email.</small>
-      </div>
+  <div>
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email" type="email" />
+    <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched">
+      <small *ngIf="registrationForm.get('email')?.hasError('required')">Email is required.</small>
+      <small *ngIf="registrationForm.get('email')?.hasError('email')">Invalid email address.</small>
     </div>
-  
-    <!-- Password -->
-    <div class="mb-3">
-      <label for="password" class="form-label">Password:</label>
-      <input type="password" class="form-control" id="password" formControlName="password">
-      <div *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.invalid" class="text-danger">
-        <small *ngIf="registrationForm.get('password')?.hasError('required')">Password is required.</small>
-        <small *ngIf="registrationForm.get('password')?.hasError('minlength')">Password must be at least 6 characters.</small>
-      </div>
+  </div>
+
+  <div>
+    <label for="password">Password:</label>
+    <input id="password" formControlName="password" type="password" />
+    <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched">
+      <small *ngIf="registrationForm.get('password')?.hasError('required')">Password is required.</small>
+      <small *ngIf="registrationForm.get('password')?.hasError('minlength')">Password must be at least 6 characters long.</small>
     </div>
-  
-    <!-- Confirm Password -->
-    <div class="mb-3">
-      <label for="confirmPassword" class="form-label">Confirm Password:</label>
-      <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword">
-      <div *ngIf="registrationForm.get('confirmPassword')?.touched && registrationForm.get('confirmPassword')?.invalid" class="text-danger">
-        <small *ngIf="registrationForm.get('confirmPassword')?.hasError('required')">Confirm Password is required.</small>
-        <small *ngIf="registrationForm.get('confirmPassword')?.hasError('passwordMismatch')">Passwords must match.</small>
-      </div>
+  </div>
+
+  <div>
+    <label for="confirmPassword">Confirm Password:</label>
+    <input id="confirmPassword" formControlName="confirmPassword" type="password" />
+    <div *ngIf="registrationForm.hasError('passwordMismatch') && registrationForm.get('confirmPassword')?.touched">
+      <small>Passwords do not match.</small>
     </div>
-  
-    <!-- Submit Button -->
-    <button type="submit" class="btn btn-primary" [disabled]="registrationForm.invalid">Register</button>
-  </form>
-  
+  </div>
+
+  <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+</form>

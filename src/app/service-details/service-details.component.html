@@ -1,0 +1,16 @@
+<form (ngSubmit)="onSubmit()">
+    <label for="serviceName">Service Name:</label>
+    <input type="text" id="serviceName" [(ngModel)]="service.name" name="serviceName" required>
+  
+    <label for="serviceDescription">Service Description:</label>
+    <textarea id="serviceDescription" [(ngModel)]="service.description" name="serviceDescription"></textarea>
+  
+    <label for="serviceCategory">Service Category:</label>
+    <input type="text" id="serviceCategory" [(ngModel)]="service.category" name="serviceCategory">
+  
+    <label for="serviceCost">Service Cost:</label>
+    <input type="number" id="serviceCost" [(ngModel)]="service.cost" name="serviceCost" required>
+  
+    <button type="submit" [disabled]="!service.name || !service.cost">Save</button>
+  </form>
+  

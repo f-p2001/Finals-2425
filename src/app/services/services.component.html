@@ -1,0 +1,23 @@
+<table class="services-table">
+    <thead>
+      <tr>
+        <th>Service ID</th>
+        <th>Service Name</th>
+        <th>Service Category</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let service of services">
+        <td>{{ service.id }}</td>
+        <td>{{ service.name }}</td>
+        <td>{{ service.category }}</td>
+        <td>
+          <button (click)="viewService(service.id)">View</button>
+          <button (click)="editService(service.id)">Edit</button>
+          <button (click)="deleteService(service.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
